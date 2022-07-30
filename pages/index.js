@@ -41,13 +41,19 @@ export default function Home() {
     try{
 
       // if(presaleEnded) {
+        console.log('presaleEnded::::::', presaleEnded);
+
         const signer = await getProviderOrSigner(true);
         const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
+
+        const presaleTime = await nftContract.presaleEnded();
+        console.log('presaleTime:::::', presaleTime.toString())
 
         const tx = await nftContract.mint({
           // value signifies the cost of one crypto dev which is "0.01" eth.
           // We are parsing `0.01` string to ether using the utils library from ethers.js
           value: utils.parseEther("0.01"),
+          gasLimit: utils.parseEther("0.0000000000001"),
         });
         setLoading(true);
         tx.wait();
@@ -112,6 +118,7 @@ export default function Home() {
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
 
       const hasEnded = await nftContract.presaleEnded();
+      console.log('hasEnded:::::', hasEnded.toString())
       const _hasEnded = hasEnded.lt(Math.floor(Date.now() / 1000));
 
       _hasEnded ? setPresaleEnded(true) : setPresaleEnded(false);
