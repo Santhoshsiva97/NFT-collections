@@ -33,7 +33,7 @@ export default function Home() {
       window.alert("Crypto Dev NFT is successfully minted!!!");
 
     } catch(err) {
-      console.error(err);
+      console.error('presaleMint::::::', err);
     }
   }
 
@@ -59,7 +59,7 @@ export default function Home() {
       // }
 
     } catch(err) {
-      console.error(err);
+      console.error('publicMint::::::::::::', err);
     }
   }
 
@@ -81,7 +81,7 @@ export default function Home() {
       await checkIfPresaleStarted();
 
     } catch(err) {
-      console.error(err);
+      console.error('startPresale::::::::', err);
     }
 
   }
@@ -100,7 +100,7 @@ export default function Home() {
       setPresaleStarted(true);
       return presaleStarted;
     } catch(err) {
-      console.error(err);
+      console.error('checkIfPresaleStarted:::::::::::::', err);
       return false;
     }
   }
@@ -118,7 +118,7 @@ export default function Home() {
       return _hasEnded;
 
     } catch(err) {
-      console.error(err);
+      console.error('checkIfPresaleEnded::::::::', err);
       return false;
     }
   }
@@ -133,7 +133,7 @@ export default function Home() {
       setTokenIds(getTokenIds.toString()); // BigO Object
 
     } catch(err) {
-      console.error(err);
+      console.error('getTokenIdsMinted::::::::', err);
     }
   }
 
@@ -147,7 +147,7 @@ export default function Home() {
       }
 
     } catch(err) {
-      console.error(err);
+      console.error('connectWallet::::::::::', err);
     }
 
   }
@@ -168,7 +168,7 @@ export default function Home() {
       }
 
     } catch(err) {
-      console.error(err);
+      console.error('getOwner::::::::', err);
     }
 
   }
