@@ -101,6 +101,7 @@ export default function Home() {
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
 
       const isPresaleStarted = await nftContract.presaleStarted();
+      console.log('isPresaleStarted::::::::', isPresaleStarted);
 
       if(!isPresaleStarted) {
         await getOwner();
@@ -168,6 +169,7 @@ export default function Home() {
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
 
       const _owner = await nftContract.owner();
+      console.log('_owner::::::::', _owner);
 
       const currentSigner = await getProviderOrSigner(true);
       const address = await currentSigner.getAddress();
