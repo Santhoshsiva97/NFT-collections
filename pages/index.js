@@ -106,8 +106,8 @@ export default function Home() {
       if(!isPresaleStarted) {
         await getOwner();
       }
-      setPresaleStarted(true);
-      return presaleStarted;
+      setPresaleStarted(isPresaleStarted);
+      return isPresaleStarted;
     } catch(err) {
       console.error('checkIfPresaleStarted:::::::::::::', err);
       return false;
@@ -173,8 +173,10 @@ export default function Home() {
 
       const currentSigner = await getProviderOrSigner(true);
       const address = await currentSigner.getAddress();
+      console.log('curent signer:::::::::', address);
 
       if(address.toLowerCase() === _owner.toLowerCase()) {
+        console.log('lowercase:::')
         setIsOwner(true);
       }
 
